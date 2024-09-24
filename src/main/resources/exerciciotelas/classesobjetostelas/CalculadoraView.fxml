@@ -9,20 +9,20 @@
 
     <!-- Numerador input -->
     <Label layoutX="50.0" layoutY="50.0" text="Numerador:" />
-    <TextField fx:id="numeradorField" layoutX="150.0" layoutY="50.0" promptText="Digite o numerador" />
+    <TextField fx:id="txtNumerador" layoutX="150.0" layoutY="50.0" promptText="Digite o numerador" />
 
     <!-- Denominador input -->
     <Label layoutX="50.0" layoutY="100.0" text="Denominador:" />
-    <TextField fx:id="denominadorField" layoutX="150.0" layoutY="100.0" promptText="Digite o denominador" />
+    <TextField fx:id="txtDenominador" layoutX="150.0" layoutY="100.0" promptText="Digite o denominador" />
 
     <!-- Buttons for operations -->
-    <Button fx:id="somaBtn" layoutX="50.0" layoutY="150.0" text="Somar" />
-    <Button fx:id="subtrairBtn" layoutX="150.0" layoutY="150.0" text="Subtrair" />
-    <Button fx:id="multiplicarBtn" layoutX="250.0" layoutY="150.0" text="Multiplicar" />
-    <Button fx:id="dividirBtn" layoutX="350.0" layoutY="150.0" text="Dividir" />
+    <Button fx:id="btnSoma" layoutX="50.0" layoutY="150.0" text="Somar" />
+    <Button fx:id="btnSubtrair" layoutX="150.0" layoutY="150.0" text="Subtrair" />
+    <Button fx:id="btnMultiplicar" layoutX="250.0" layoutY="150.0" text="Multiplicar" />
+    <Button fx:id="btnDividir" layoutX="350.0" layoutY="150.0" text="Dividir" />
 
     <!-- Label to display results -->
     <Label layoutX="50.0" layoutY="200.0" text="Resultado:" />
-    <Label fx:id="resultadoLabel" layoutX="150.0" layoutY="200.0" text="" />
+    <Label fx:id="lblResultado" layoutX="150.0" layoutY="200.0" text="" />
 
 </AnchorPane>

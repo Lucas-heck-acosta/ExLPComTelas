@@ -8,40 +8,41 @@ import javafx.scene.control.TextField;
 public class CalculatorController {
 
     @FXML
-    private TextField denominadorField;
+    private Button btnDividir;
 
     @FXML
-    private Button dividirBtn;
+    private Button btnMultiplicar;
 
     @FXML
-    private Button multiplicarBtn;
+    private Button btnSoma;
 
     @FXML
-    private TextField numeradorField;
+    private Button btnSubtrair;
 
     @FXML
-    private Label resultadoLabel;
+    private Label lblResultado;
 
     @FXML
-    private Button somaBtn;
+    private TextField txtDenominador;
 
     @FXML
-    private Button subtrairBtn;
+    private TextField txtNumerador;
+
 
     private Calculadora calculadora = new Calculadora();
 
     @FXML
     public void initialize() {
-        somaBtn.setOnAction(event -> realizarOperacao("soma"));
-        subtrairBtn.setOnAction(event -> realizarOperacao("subtracao"));
-        multiplicarBtn.setOnAction(event -> realizarOperacao("multiplicacao"));
-        dividirBtn.setOnAction(event -> realizarOperacao("divisao"));
+        btnSoma.setOnAction(event -> realizarOperacao("soma"));
+        btnSubtrair.setOnAction(event -> realizarOperacao("subtracao"));
+        btnMultiplicar.setOnAction(event -> realizarOperacao("multiplicacao"));
+        btnDividir.setOnAction(event -> realizarOperacao("divisao"));
     }
 
     private void realizarOperacao(String operacao) {
         try {
-            double numerador = Double.parseDouble(numeradorField.getText());
-            double denominador = Double.parseDouble(denominadorField.getText());
+            double numerador = Double.parseDouble(txtNumerador.getText());
+            double denominador = Double.parseDouble(txtDenominador.getText());
 
             calculadora.setNumerador(numerador);
             calculadora.setDenominador(denominador);
@@ -60,17 +61,17 @@ public class CalculatorController {
                     break;
                 case "divisao":
                     if (denominador == 0) {
-                        resultadoLabel.setText("Erro: Divisão por zero!");
+                        lblResultado.setText("Erro: Divisão por zero!");
                         return;
                     }
                     resultado = calculadora.divisao();
                     break;
             }
 
-            resultadoLabel.setText(String.valueOf(resultado));
+            lblResultado.setText(String.valueOf(resultado));
 
         } catch (NumberFormatException e) {
-            resultadoLabel.setText("Erro: Insira números válidos.");
+            lblResultado.setText("Erro: Insira números válidos.");
         }
     }
 }
