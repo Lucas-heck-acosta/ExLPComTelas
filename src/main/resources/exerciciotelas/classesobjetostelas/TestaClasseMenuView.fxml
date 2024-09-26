@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="417.0" prefWidth="291.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="exerciciotelas.classesobjetostelas.TestaClasseMenuController">
+
+    <children>
+        <Button fx:id="btnCachorro" mnemonicParsing="false" onAction="#openCachorroView" prefHeight="90.0" prefWidth="291.0" text="Cachorro" />
+        <Button fx:id="btnCarro" mnemonicParsing="false" onAction="#openCarroView" prefHeight="90.0" prefWidth="291.0" text="Carro" />
+        <Button fx:id="btnCelular" mnemonicParsing="false" onAction="#openCelularView" prefHeight="90.0" prefWidth="291.0" text="Celular" />
+        <Button fx:id="btnFogao" mnemonicParsing="false" onAction="#openFogaoView" prefHeight="90.0" prefWidth="291.0" text="Fogão" />
+        <Button fx:id="btnGato" mnemonicParsing="false" onAction="#openGatoView" prefHeight="90.0" prefWidth="291.0" text="Gato" />
+        <Button fx:id="btnMonitor" mnemonicParsing="false" onAction="#openMonitorView" prefHeight="90.0" prefWidth="291.0" text="Monitor" />
+        <Button fx:id="btnMouse" mnemonicParsing="false" onAction="#openMouseView" prefHeight="90.0" prefWidth="291.0" text="Mouse" />
+        <Button fx:id="btnNotebook" mnemonicParsing="false" onAction="#openNotebookView" prefHeight="90.0" prefWidth="291.0" text="Notebook" />
+        <Button fx:id="btnPessoa" mnemonicParsing="false" onAction="#openPessoaView" prefHeight="90.0" prefWidth="291.0" text="Pessoa" />
+        <Button fx:id="btnVideogame" mnemonicParsing="false" onAction="#openVideogameView" prefHeight="90.0" prefWidth="291.0" text="Videogame" />
+        <Button fx:id="btnCalculadora" mnemonicParsing="false" onAction="#openCalculadoraView" prefHeight="90.0" prefWidth="291.0" text="Calculadora" />
+        <Button fx:id="btnSair" mnemonicParsing="false" onAction="#exitApplication" prefHeight="90.0" prefWidth="291.0" text="Sair" />
+    </children>
+</VBox>
