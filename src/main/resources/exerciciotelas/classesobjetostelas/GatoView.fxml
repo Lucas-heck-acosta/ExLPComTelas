@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="exerciciotelas.classesobjetostelas.GatoController">
+
+    <!-- Label and TextField for Gato's Name -->
+    <Label layoutX="50.0" layoutY="30.0" text="Nome:" />
+    <TextField fx:id="txtNome" layoutX="120.0" layoutY="30.0" promptText="Digite o nome do gato" />
+
+    <!-- Label and TextField for Gato's Breed -->
+    <Label layoutX="50.0" layoutY="70.0" text="Raça:" />
+    <TextField fx:id="txtRaca" layoutX="120.0" layoutY="70.0" promptText="Digite a raça do gato" />
+
+    <!-- Label and TextField for Gato's Weight -->
+    <Label layoutX="50.0" layoutY="110.0" text="Peso:" />
+    <TextField fx:id="txtPeso" layoutX="120.0" layoutY="110.0" promptText="Digite o peso do gato" />
+
+    <!-- Button to Create Gato Object -->
+    <Button fx:id="btnCriarGato" layoutX="120.0" layoutY="150.0" onAction="#criarGato" text="Criar Gato" />
+
+    <!-- Buttons for Actions -->
+    <Button fx:id="btnMiar" layoutX="50.0" layoutY="190.0" onAction="#miar" text="Miar" />
+    <Button fx:id="btnDormir" layoutX="150.0" layoutY="190.0" onAction="#dormir" text="Dormir" />
+    <Button fx:id="btnCorrer" layoutX="250.0" layoutY="190.0" onAction="#correr" text="Correr" />
+
+    <!-- Label to display output of the Gato's actions -->
+    <Label fx:id="lblResultado" layoutX="50.0" layoutY="240.0" text="Resultado das ações" />
+</AnchorPane>
