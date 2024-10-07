@@ -47,7 +47,6 @@ public class TestaClasseMenuController {
     @FXML
     private Button btnVideogame;
 
-    // Methods to load different views
     @FXML
     public void openCachorroView() {
         loadView("CachorroView.fxml", "Cachorro");

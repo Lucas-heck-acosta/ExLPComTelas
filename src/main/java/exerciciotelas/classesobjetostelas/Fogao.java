@@ -26,12 +26,10 @@ public class Fogao {
         System.out.println("Temperatura aumentada para: " + temperatura);
     }
 
-    // Getter for 'ligado'
     public boolean isLigado() {
         return ligado;
     }
 
-    // Getter for 'aberto'
     public boolean isAberto() {
         return aberto;
     }

@@ -7,21 +7,17 @@
 
 <AnchorPane prefHeight="236.0" prefWidth="434.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="exerciciotelas.classesobjetostelas.CalculatorController">
 
-    <!-- Numerador input -->
     <Label layoutX="50.0" layoutY="50.0" text="Numerador:" />
     <TextField fx:id="txtNumerador" layoutX="150.0" layoutY="50.0" promptText="Digite o numerador" />
 
-    <!-- Denominador input -->
     <Label layoutX="50.0" layoutY="100.0" text="Denominador:" />
     <TextField fx:id="txtDenominador" layoutX="150.0" layoutY="100.0" promptText="Digite o denominador" />
 
-    <!-- Buttons for operations -->
     <Button fx:id="btnSoma" layoutX="50.0" layoutY="150.0" text="Somar" />
     <Button fx:id="btnSubtrair" layoutX="150.0" layoutY="150.0" text="Subtrair" />
     <Button fx:id="btnMultiplicar" layoutX="250.0" layoutY="150.0" text="Multiplicar" />
     <Button fx:id="btnDividir" layoutX="350.0" layoutY="150.0" text="Dividir" />
 
-    <!-- Label to display results -->
     <Label layoutX="50.0" layoutY="200.0" text="Resultado:" />
     <Label fx:id="lblResultado" layoutX="150.0" layoutY="200.0" text="" />
 

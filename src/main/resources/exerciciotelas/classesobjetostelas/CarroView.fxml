@@ -7,24 +7,19 @@
 
 <AnchorPane prefHeight="294.0" prefWidth="370.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="exerciciotelas.classesobjetostelas.CarroController">
 
-    <!-- Label and TextField for Car's Brand -->
     <Label layoutX="50.0" layoutY="50.0" text="Marca:" />
     <TextField fx:id="txtMarca" layoutX="120.0" layoutY="50.0" promptText="Digite a marca do carro" />
 
-    <!-- Label and TextField for Car's Model -->
     <Label layoutX="50.0" layoutY="100.0" text="Modelo:" />
     <TextField fx:id="txtModelo" layoutX="120.0" layoutY="100.0" promptText="Digite o modelo do carro" />
 
-    <!-- Label and TextField for Car's Year -->
     <Label layoutX="50.0" layoutY="150.0" text="Ano:" />
     <TextField fx:id="txtAno" layoutX="120.0" layoutY="150.0" promptText="Digite o ano do carro" />
 
-    <!-- Buttons for Car Actions -->
     <Button fx:id="btnAcelerar" layoutX="50.0" layoutY="200.0" text="Acelerar" onAction="#acelerar" />
     <Button fx:id="btnFrear" layoutX="150.0" layoutY="200.0" text="Frear" onAction="#frear" />
     <Button fx:id="btnBuzinar" layoutX="250.0" layoutY="200.0" text="Buzinar" onAction="#buzinar" />
 
-    <!-- Label to display output of the car's actions -->
     <Label fx:id="lblResultado" layoutX="50.0" layoutY="250.0" text="Resultado das ações" />
 
 </AnchorPane>

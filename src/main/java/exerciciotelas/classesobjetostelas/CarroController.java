@@ -30,7 +30,6 @@ public class CarroController {
 
     private Carro carro;
 
-    // Method to initialize the Carro object based on user input
     private void createCarro() {
         String marca = txtMarca.getText();
         String modelo = txtModelo.getText();
@@ -38,7 +37,6 @@ public class CarroController {
         carro = new Carro(marca, modelo, ano);
     }
 
-    // Method to handle the Acelerar button click
     @FXML
     public void acelerar() {
         if (carro == null) {
@@ -48,7 +46,6 @@ public class CarroController {
         lblResultado.setText("Carro está acelerando!");
     }
 
-    // Method to handle the Frear button click
     @FXML
     public void frear() {
         if (carro == null) {
@@ -58,7 +55,6 @@ public class CarroController {
         lblResultado.setText("Carro está freiando!");
     }
 
-    // Method to handle the Buzinar button click
     @FXML
     public void buzinar() {
         if (carro == null) {
