@@ -7,14 +7,10 @@ import javafx.scene.control.TextField;
 
 public class CachorroController {
 
-    @FXML
-    private TextField txtNome;
+    private Cachorro cachorro;
 
     @FXML
-    private TextField txtRaca;
-
-    @FXML
-    private TextField txtPeso;
+    private Button btnCriarCachorro;
 
     @FXML
     private Button btnLatir;
@@ -28,35 +24,52 @@ public class CachorroController {
     @FXML
     private Label lblResultado;
 
-    private Cachorro cachorro;
+    @FXML
+    private TextField txtNome;
 
     @FXML
-    public void initialize() {
-        // Set up action events for the buttons
-        btnLatir.setOnAction(event -> {
-            criarCachorro();
-            cachorro.latir();
-            lblResultado.setText("Cachorro " + cachorro.getNome() + ": AU AU AU!");
-        });
+    private TextField txtPeso;
 
-        btnDormir.setOnAction(event -> {
-            criarCachorro();
-            cachorro.dormir();
-            lblResultado.setText("Cachorro " + cachorro.getNome() + ": dormindo zzz...");
-        });
+    @FXML
+    private TextField txtRaca;
 
-        btnCorrer.setOnAction(event -> {
-            criarCachorro();
-            cachorro.correr();
-            lblResultado.setText("Cachorro " + cachorro.getNome() + ": correndo!");
-        });
-    }
-
-    // Method to create or update the Cachorro object based on user input
-    private void criarCachorro() {
+    @FXML
+    public void criarCachorro() {
         String nome = txtNome.getText();
         String raca = txtRaca.getText();
         double peso = Double.parseDouble(txtPeso.getText());
+
         cachorro = new Cachorro(nome, raca, peso);
+        lblResultado.setText("Cachorro criado: " + nome + ", Raça: " + raca + ", Peso: " + peso + " kg");
+    }
+
+    @FXML
+    public void latir() {
+        if (cachorro != null) {
+            cachorro.latir();
+            lblResultado.setText(cachorro.getNome() + " está latindo!");
+        } else {
+            lblResultado.setText("Crie o cachorro primeiro!");
+        }
+    }
+
+    @FXML
+    public void dormir() {
+        if (cachorro != null) {
+            cachorro.dormir();
+            lblResultado.setText(cachorro.getNome() + " está dormindo!");
+        } else {
+            lblResultado.setText("Crie o cachorro primeiro!");
+        }
+    }
+
+    @FXML
+    public void correr() {
+        if (cachorro != null) {
+            cachorro.correr();
+            lblResultado.setText(cachorro.getNome() + " está correndo!");
+        } else {
+            lblResultado.setText("Crie o cachorro primeiro!");
+        }
     }
 }
