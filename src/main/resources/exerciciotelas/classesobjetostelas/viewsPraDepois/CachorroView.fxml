@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="456.0" prefWidth="503.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="exerciciotelas.classesobjetostelas.objetosPraDepois.CachorroController">
+
+    <!-- Label and TextField for Dog's Name -->
+    <Label layoutX="109.0" layoutY="205.0" text="Nome:" />
+    <TextField fx:id="txtNome" layoutX="179.0" layoutY="205.0" promptText="Digite o nome do cachorro" />
+
+    <!-- Label and TextField for Dog's Breed -->
+    <Label layoutX="109.0" layoutY="245.0" text="Raça:" />
+    <TextField fx:id="txtRaca" layoutX="179.0" layoutY="245.0" promptText="Digite a raça do cachorro" />
+
+    <!-- Label and TextField for Dog's Weight -->
+    <Label layoutX="109.0" layoutY="285.0" text="Peso:" />
+    <TextField fx:id="txtPeso" layoutX="179.0" layoutY="285.0" promptText="Digite o peso do cachorro" />
+
+    <!-- Button to Create Dog Object -->
+    <Button fx:id="btnCriarCachorro" layoutX="179.0" layoutY="325.0" onAction="#criarCachorro" text="Criar Cachorro" />
+
+    <!-- Buttons for Actions -->
+    <Button fx:id="btnLatir" layoutX="109.0" layoutY="365.0" onAction="#latir" text="Latir" />
+    <Button fx:id="btnDormir" layoutX="209.0" layoutY="365.0" onAction="#dormir" text="Dormir" />
+    <Button fx:id="btnCorrer" layoutX="309.0" layoutY="365.0" onAction="#correr" text="Correr" />
+
+    <!-- Label to display output of the dog's actions -->
+    <Label fx:id="lblResultado" layoutX="109.0" layoutY="415.0" text="Resultado das ações" />
+   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="152.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../../dog.png" />
+      </image>
+   </ImageView>
+</AnchorPane>

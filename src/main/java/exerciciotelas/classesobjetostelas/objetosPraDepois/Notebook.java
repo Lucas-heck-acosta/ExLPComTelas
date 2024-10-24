@@ -1,4 +1,4 @@
-package exerciciotelas.classesobjetostelas;
+package exerciciotelas.classesobjetostelas.objetosPraDepois;
 
 public class Notebook {
     private boolean ligado;

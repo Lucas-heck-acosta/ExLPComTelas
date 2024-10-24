@@ -5,36 +5,70 @@ public class Fogao {
     private boolean ligado;
     private int temperatura;
 
-    public Fogao(boolean aberto, boolean ligado, int temperatura) {
-        this.aberto = aberto;
-        this.ligado = ligado;
-        this.temperatura = temperatura;
+    public Fogao() {
+        this.aberto = false;
+        this.ligado = false;
+        this.temperatura = 0;
     }
 
-    public void ligarDesligar() {
-        ligado = !ligado;
-        System.out.println("Agora o fogão está: " + (ligado ? "LIGADO!" : "DESLIGADO!"));
+    public void ligar() {
+        if (!ligado) {
+            ligado = true;
+            System.out.println("Fogão ligado.");
+        } else {
+            System.out.println("O fogão já está ligado.");
+        }
     }
 
-    public void abrirFecharTampa() {
-        aberto = !aberto;
-        System.out.println("Agora o fogão está: " + (aberto ? "ABERTO!" : "FECHADO!"));
+    public void desligar() {
+        if (ligado) {
+            ligado = false;
+            temperatura = 0;
+            System.out.println("Fogão desligado.");
+        } else {
+            System.out.println("O fogão já está desligado.");
+        }
     }
 
-    public void aumentarTemperatura() {
-        temperatura += 5;
-        System.out.println("Temperatura aumentada para: " + temperatura);
+    public void abrir() {
+        if (!aberto) {
+            aberto = true;
+            System.out.println("Fogão aberto.");
+        } else {
+            System.out.println("O fogão já está aberto.");
+        }
     }
 
-    public boolean isLigado() {
-        return ligado;
+    public void fechar() {
+        if (aberto) {
+            aberto = false;
+            System.out.println("Fogão fechado.");
+        } else {
+            System.out.println("O fogão já está fechado.");
+        }
+    }
+
+    public void ajustarTemperatura(int novaTemperatura) {
+        if (ligado) {
+            if (novaTemperatura >= 0) {
+                temperatura = novaTemperatura;
+                System.out.println("Temperatura ajustada para " + temperatura + "°C.");
+            } else {
+                System.out.println("A temperatura não pode ser negativa.");
+            }
+        } else {
+            System.out.println("Não é possível ajustar a temperatura, o fogão está desligado.");
+        }
     }
 
     public boolean isAberto() {
         return aberto;
     }
 
-    // Getter for 'temperatura'
+    public boolean isLigado() {
+        return ligado;
+    }
+
     public int getTemperatura() {
         return temperatura;
     }

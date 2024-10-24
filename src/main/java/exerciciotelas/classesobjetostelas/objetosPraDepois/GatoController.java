@@ -1,4 +1,4 @@
-package exerciciotelas.classesobjetostelas;
+package exerciciotelas.classesobjetostelas.objetosPraDepois;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

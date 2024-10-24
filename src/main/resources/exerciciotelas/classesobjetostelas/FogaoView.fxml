@@ -2,16 +2,50 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="400.0" prefWidth="300.0" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="exerciciotelas.classesobjetostelas.FogaoController">
-    <children>
-        <Label text="Controle do Fogão" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
 
-        <Button fx:id="btnLigarDesligar" text="Ligar/Desligar Fogão" onAction="#ligarDesligar" prefHeight="60.0" prefWidth="200.0" />
-        <Button fx:id="btnAbrirFechar" text="Abrir/Fechar Tampa" onAction="#abrirFecharTampa" prefHeight="60.0" prefWidth="200.0" />
-        <Button fx:id="btnAumentarTemperatura" text="Aumentar Temperatura" onAction="#aumentarTemperatura" prefHeight="60.0" prefWidth="200.0" />
-
-        <Label fx:id="lblStatus" text="Status do Fogão" />
-    </children>
-</VBox>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="547.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="exerciciotelas.classesobjetostelas.FogaoController">
+   <children>
+      <Label layoutX="243.0" layoutY="14.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="FOGÃO">
+         <font>
+            <Font size="41.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="imgFogao" fitHeight="216.0" fitWidth="325.0" layoutX="125.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../assets/fogaoFechado.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="220.0" layoutY="453.0" text="Temperatura">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnAbrir" layoutX="125.0" layoutY="276.0" mnemonicParsing="false" onAction="#abrirFogao" prefHeight="70.0" prefWidth="141.0" text="Abrir Fogão">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnFechar" layoutX="281.0" layoutY="273.0" mnemonicParsing="false" onAction="#fecharFogao" prefHeight="76.0" prefWidth="141.0" text="Fechar Fogão">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnTurnOnOff" layoutX="196.0" layoutY="365.0" mnemonicParsing="false" onAction="#turnOnOff" prefHeight="70.0" prefWidth="141.0" text="Ligar">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
+      <Slider fx:id="sldTemp" layoutX="127.0" layoutY="475.0" max="300.0" prefHeight="54.0" prefWidth="279.0" showTickLabels="true" showTickMarks="true" />
+      <Label fx:id="lblTemp" layoutX="429.0" layoutY="146.0" text="0 graus">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

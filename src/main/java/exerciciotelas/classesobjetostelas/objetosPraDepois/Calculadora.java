@@ -1,4 +1,4 @@
-package exerciciotelas.classesobjetostelas;
+package exerciciotelas.classesobjetostelas.objetosPraDepois;
 
 import java.util.Scanner;
 

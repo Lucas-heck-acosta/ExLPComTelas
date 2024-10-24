@@ -1,4 +1,4 @@
-package exerciciotelas.classesobjetostelas;
+package exerciciotelas.classesobjetostelas.objetosPraDepois;
 
 public class Cachorro {
     private String nome;

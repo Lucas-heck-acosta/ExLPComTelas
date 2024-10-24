@@ -1,40 +1,116 @@
 package exerciciotelas.classesobjetostelas;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 
 public class FogaoController {
 
-    private Fogao fogao = new Fogao(false, false, 0);
+    private Fogao fogao = new Fogao();
 
     @FXML
-    private Button btnLigarDesligar;
+    private Button btnAbrir;
 
     @FXML
-    private Button btnAbrirFechar;
+    private Button btnFechar;
 
     @FXML
-    private Button btnAumentarTemperatura;
+    private Button btnTurnOnOff;
 
     @FXML
-    private Label lblStatus;
+    private ImageView imgFogao;
 
     @FXML
-    public void ligarDesligar() {
-        fogao.ligarDesligar();
-        lblStatus.setText("Fogão: " + (fogao.isLigado() ? "Ligado" : "Desligado"));
+    private Label lblTemp;
+
+    @FXML
+    private Slider sldTemp;
+
+    @FXML
+    public void initialize() {
+        sldTemp.valueProperty().addListener((observable, oldValue, newValue) ->
+        {
+            if (fogao.isLigado())
+            {
+                int temperatura = newValue.intValue();
+                fogao.ajustarTemperatura(temperatura);
+                lblTemp.setText(temperatura + "°C");
+                atualizarImagemFogao();
+            }
+            else
+            {
+                lblTemp.setText("0°C");
+            }
+        });
+
+        atualizarImagemFogao();
+        atualizarEstadoBotao();
+        lblTemp.setText("0°C");
     }
 
     @FXML
-    public void abrirFecharTampa() {
-        fogao.abrirFecharTampa();
-        lblStatus.setText("Tampa: " + (fogao.isAberto() ? "Aberta" : "Fechada"));
+    void abrirFogao(ActionEvent event) {
+        if (!fogao.isAberto()) {
+            fogao.abrir();
+            atualizarImagemFogao();
+        }
     }
 
     @FXML
-    public void aumentarTemperatura() {
-        fogao.aumentarTemperatura();
-        lblStatus.setText("Temperatura: " + fogao.getTemperatura() + "°C");
+    void fecharFogao(ActionEvent event) {
+        if (fogao.isAberto()) {
+            fogao.fechar();
+            atualizarImagemFogao();
+        }
+    }
+
+    @FXML
+    void turnOnOff(ActionEvent event) {
+        if (fogao.isLigado()) {
+            fogao.desligar();
+        } else {
+            fogao.ligar();
+        }
+
+        atualizarEstadoBotao();
+
+        if (fogao.isLigado()) {
+            lblTemp.setText(sldTemp.getValue() + "°C");
+        } else {
+            lblTemp.setText("0°C");
+        }
+    }
+
+    private void atualizarImagemFogao() {
+        int temperatura = fogao.getTemperatura();
+
+        if (temperatura >= 300)
+        {
+            imgFogao.setImage(new Image(getClass().getResource("/assets/pegandoFogo.jpg").toExternalForm()));
+        }
+        else if (fogao.isAberto())
+        {
+            imgFogao.setImage(new Image(getClass().getResource("/assets/fogaoAberto.jpg").toExternalForm()));
+        }
+        else
+        {
+            imgFogao.setImage(new Image(getClass().getResource("/assets/fogaoFechado.jpg").toExternalForm()));
+        }
+    }
+
+    private void atualizarEstadoBotao() {
+        if (fogao.isLigado()) {
+            btnTurnOnOff.setText("Desligar");
+            btnTurnOnOff.setStyle("-fx-background-color: red; -fx-text-fill: white;");
+        }
+        else {
+            btnTurnOnOff.setText("Ligar");
+            btnTurnOnOff.setStyle("-fx-background-color: green; -fx-text-fill: white;");
+        }
     }
 }
