@@ -3,6 +3,7 @@ module exerciciotelas.classesobjetostelas {
     requires javafx.fxml;
 
     requires com.dlsc.formsfx;
+    requires java.sql;
 
     opens exerciciotelas.classesobjetostelas to javafx.fxml;
     exports exerciciotelas.classesobjetostelas;
