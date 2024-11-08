@@ -19,10 +19,17 @@ public class ProdutoDAO {
         String sql = "INSERT INTO produto (nome, categoria) VALUES (?, ?)";
 
         try (Connection conn = getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, produto.getNome());
             stmt.setString(2, produto.getCategoria());
             stmt.executeUpdate();
+
+            // Retrieve and set the generated ID
+            try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    produto.setId(generatedKeys.getInt(1));
+                }
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -36,9 +43,10 @@ public class ProdutoDAO {
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
+                int id = rs.getInt("id_produto");
                 String nome = rs.getString("nome");
                 String categoria = rs.getString("categoria");
-                Produto produto = new Produto(nome, categoria);
+                Produto produto = new Produto(id, nome, categoria);
                 produtos.add(produto);
             }
         } catch (SQLException e) {

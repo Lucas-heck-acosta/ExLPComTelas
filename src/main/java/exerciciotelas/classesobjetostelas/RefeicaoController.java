@@ -1,6 +1,7 @@
 package exerciciotelas.classesobjetostelas;
 
 import exerciciotelas.classesobjetostelas.DAO.ProdutoDAO;
+import exerciciotelas.classesobjetostelas.DAO.RefeicaoDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -36,11 +37,13 @@ public class RefeicaoController {
     private Slider sldTemperatura;
 
     private ProdutoDAO produtoDAO;
+    private RefeicaoDAO refeicaoDAO;
     private ObservableList<Produto> produtosDisponiveis;
     private ObservableList<Produto> produtosSelecionados;
 
     public RefeicaoController() {
         this.produtoDAO = new ProdutoDAO();
+        this.refeicaoDAO = new RefeicaoDAO();
         this.produtosDisponiveis = FXCollections.observableArrayList();
         this.produtosSelecionados = FXCollections.observableArrayList();
     }
@@ -66,8 +69,7 @@ public class RefeicaoController {
     @FXML
     void remover(ActionEvent event) {
         Produto selectedProduto = lvReceita.getSelectionModel().getSelectedItem();
-        if (selectedProduto != null)
-        {
+        if (selectedProduto != null) {
             produtosSelecionados.remove(selectedProduto);
             produtosDisponiveis.add(selectedProduto);
             produtosDisponiveis.sort(Comparator.comparing(Produto::getNome));
@@ -78,13 +80,11 @@ public class RefeicaoController {
     void cadastrarRefeicao(ActionEvent event) {
         String nome = txtNome.getText();
         int temperaturaDePreparo = (int) sldTemperatura.getValue();
-        if (nome != null && !nome.isEmpty() && !produtosSelecionados.isEmpty())
-        {
+        if (nome != null && !nome.isEmpty() && !produtosSelecionados.isEmpty()) {
             Refeicao refeicao = new Refeicao(produtosSelecionados, nome, temperaturaDePreparo);
+            refeicaoDAO.addRefeicao(refeicao);
             System.out.println("Refeicao cadastrada: " + refeicao.getNome() + " com " + refeicao.getProdutos().size() + " produtos e temperatura de preparo: " + refeicao.getTemperaturaDePreparo());
-        }
-        else
-        {
+        } else {
             System.out.println("Erro: Nome da refeição ou lista de produtos está vazia.");
         }
     }

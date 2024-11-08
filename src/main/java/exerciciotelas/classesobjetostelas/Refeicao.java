@@ -1,20 +1,34 @@
 package exerciciotelas.classesobjetostelas;
 
-import java.sql.Ref;
 import java.util.List;
 
 public class Refeicao {
+    private int id;
     private List<Produto> produtos;
-
     private String nome;
     private int temperaturaDePreparo;
+
+    public Refeicao(int id, String nome, int temperaturaDePreparo) {
+        this.id = id;
+        this.nome = nome;
+        this.temperaturaDePreparo = temperaturaDePreparo;
+    }
 
     public Refeicao(List<Produto> produtos, String nome, int temperaturaDePreparo) {
         this.produtos = produtos;
         this.nome = nome;
         this.temperaturaDePreparo = temperaturaDePreparo;
     }
-    public Refeicao(){}
+
+    public Refeicao() {}
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public List<Produto> getProdutos() {
         return produtos;

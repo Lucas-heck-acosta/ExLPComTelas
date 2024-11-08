@@ -1,13 +1,27 @@
 package exerciciotelas.classesobjetostelas;
 
 public class Produto {
+    private int id;
     private String nome;
     private String categoria;
 
+    public Produto(int id, String nome, String categoria) {
+        this.id = id;
+        this.nome = nome;
+        this.categoria = categoria;
+    }
 
     public Produto(String nome, String categoria) {
         this.nome = nome;
-        this.categoria =categoria;
+        this.categoria = categoria;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
