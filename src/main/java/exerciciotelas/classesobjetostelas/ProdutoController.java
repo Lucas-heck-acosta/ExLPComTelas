@@ -1,6 +1,8 @@
 package exerciciotelas.classesobjetostelas;
 
 import exerciciotelas.classesobjetostelas.DAO.ProdutoDAO;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -9,8 +11,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 public class ProdutoController {
 
@@ -39,7 +39,6 @@ public class ProdutoController {
     @FXML
     public void initialize() {
         cmbCategoria.setItems(categorias);
-
         cmbCategoria.setOnAction(event -> atualizarImagemProduto());
     }
 
@@ -78,19 +77,22 @@ public class ProdutoController {
 
         if (nome != null && !nome.isEmpty() && categoria != null) {
             Produto produto = new Produto(nome, categoria);
-            produtoDAO.addProduto(produto);
-
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Cadastro de Produto");
-            alert.setHeaderText("Produto Cadastrado");
-            alert.setContentText("Produto cadastrado com sucesso!");
-            alert.showAndWait();
+            try {
+                produtoDAO.addProduto(produto);
+                showAlert(Alert.AlertType.INFORMATION, "Cadastro de Produto", "Produto cadastrado com sucesso!");
+            } catch (Exception e) {
+                showAlert(Alert.AlertType.ERROR, "Erro ao Cadastrar Produto", "Erro: " + e.getMessage());
+            }
         } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Erro de Cadastro");
-            alert.setHeaderText("Campos Incompletos");
-            alert.setContentText("Por favor, preencha todos os campos para cadastrar o produto.");
-            alert.showAndWait();
+            showAlert(Alert.AlertType.WARNING, "Erro de Cadastro", "Por favor, preencha todos os campos para cadastrar o produto.");
         }
+    }
+
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

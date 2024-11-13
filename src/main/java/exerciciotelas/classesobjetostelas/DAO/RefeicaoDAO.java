@@ -4,6 +4,7 @@ import exerciciotelas.classesobjetostelas.Refeicao;
 import exerciciotelas.classesobjetostelas.Produto;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class RefeicaoDAO {
@@ -52,5 +53,46 @@ public class RefeicaoDAO {
         }
     }
 
-    // Other methods (getAllRefeicoes, updateRefeicao, deleteRefeicao) can be added here
+    public List<Refeicao> getAllRefeicoes() {
+        List<Refeicao> refeicoes = new ArrayList<>();
+        String sqlRefeicao = "SELECT * FROM refeicao";
+        String sqlRefeicaoProduto = "SELECT p.* FROM produto p " +
+                "JOIN refeicao_produto rp ON p.id_produto = rp.id_produto " +
+                "WHERE rp.id_refeicao = ?";
+
+        try (Connection conn = getConnection();
+             PreparedStatement stmtRefeicao = conn.prepareStatement(sqlRefeicao);
+             ResultSet rsRefeicao = stmtRefeicao.executeQuery()) {
+
+            while (rsRefeicao.next()) {
+                int idRefeicao = rsRefeicao.getInt("id_refeicao");
+                String nome = rsRefeicao.getString("nome");
+                int temperaturaDePreparo = rsRefeicao.getInt("temperatura_de_preparo");
+
+                Refeicao refeicao = new Refeicao(new ArrayList<>(), nome, temperaturaDePreparo);
+                refeicao.setId(idRefeicao);
+
+                try (PreparedStatement stmtRefeicaoProduto = conn.prepareStatement(sqlRefeicaoProduto)) {
+                    stmtRefeicaoProduto.setInt(1, idRefeicao);
+                    try (ResultSet rsProduto = stmtRefeicaoProduto.executeQuery()) {
+                        while (rsProduto.next()) {
+                            int idProduto = rsProduto.getInt("id_produto");
+                            String nomeProduto = rsProduto.getString("nome");
+                            String categoria = rsProduto.getString("categoria");
+
+                            Produto produto = new Produto(nomeProduto, categoria);
+                            produto.setId(idProduto);
+                            refeicao.getProdutos().add(produto);
+                        }
+                    }
+                }
+
+                refeicoes.add(refeicao);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return refeicoes;
+    }
 }

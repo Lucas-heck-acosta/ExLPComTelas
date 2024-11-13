@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Slider;
@@ -82,10 +83,22 @@ public class RefeicaoController {
         int temperaturaDePreparo = (int) sldTemperatura.getValue();
         if (nome != null && !nome.isEmpty() && !produtosSelecionados.isEmpty()) {
             Refeicao refeicao = new Refeicao(produtosSelecionados, nome, temperaturaDePreparo);
-            refeicaoDAO.addRefeicao(refeicao);
-            System.out.println("Refeicao cadastrada: " + refeicao.getNome() + " com " + refeicao.getProdutos().size() + " produtos e temperatura de preparo: " + refeicao.getTemperaturaDePreparo());
+            try {
+                refeicaoDAO.addRefeicao(refeicao);
+                showAlert(Alert.AlertType.INFORMATION, "Cadastro de Refeição", "Refeição cadastrada com sucesso!");
+            } catch (Exception e) {
+                showAlert(Alert.AlertType.ERROR, "Erro ao Cadastrar Refeição", "Erro: " + e.getMessage());
+            }
         } else {
-            System.out.println("Erro: Nome da refeição ou lista de produtos está vazia.");
+            showAlert(Alert.AlertType.WARNING, "Erro de Cadastro", "Por favor, preencha todos os campos para cadastrar a refeição.");
         }
+    }
+
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

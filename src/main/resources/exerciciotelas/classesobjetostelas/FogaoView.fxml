@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.image.Image?>
@@ -8,8 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="547.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="exerciciotelas.classesobjetostelas.FogaoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="657.0" prefWidth="547.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="exerciciotelas.classesobjetostelas.FogaoController">
    <children>
       <Label layoutX="243.0" layoutY="14.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="FOGÃO">
          <font>
@@ -21,7 +21,7 @@
             <Image url="@../../assets/fogaoFechado.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="220.0" layoutY="453.0" text="Temperatura">
+      <Label layoutX="220.0" layoutY="518.0" text="Temperatura">
          <font>
             <Font size="17.0" />
          </font>
@@ -36,13 +36,19 @@
             <Font size="19.0" />
          </font>
       </Button>
-      <Button fx:id="btnTurnOnOff" layoutX="196.0" layoutY="365.0" mnemonicParsing="false" onAction="#turnOnOff" prefHeight="70.0" prefWidth="141.0" text="Ligar">
+      <Button fx:id="btnTurnOnOff" layoutX="196.0" layoutY="430.0" mnemonicParsing="false" onAction="#turnOnOff" prefHeight="70.0" prefWidth="141.0" text="Ligar">
          <font>
             <Font size="22.0" />
          </font>
       </Button>
-      <Slider fx:id="sldTemp" layoutX="127.0" layoutY="475.0" max="300.0" prefHeight="54.0" prefWidth="279.0" showTickLabels="true" showTickMarks="true" />
+      <Slider fx:id="sldTemp" layoutX="127.0" layoutY="540.0" max="300.0" prefHeight="54.0" prefWidth="279.0" showTickLabels="true" showTickMarks="true" />
       <Label fx:id="lblTemp" layoutX="429.0" layoutY="146.0" text="0 graus">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cmbRefeicao" layoutX="161.0" layoutY="375.0" prefHeight="48.0" prefWidth="216.0" />
+      <Label layoutX="240.0" layoutY="353.0" text="Refeição:">
          <font>
             <Font size="17.0" />
          </font>
