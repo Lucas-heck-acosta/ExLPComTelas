@@ -24,6 +24,8 @@ public class TestaClasseMenuController {
     @FXML
     private Button btnSair;
 
+    @FXML
+    private Button btnResultados;
 
     @FXML
     public void openFogaoView() {
@@ -47,7 +49,10 @@ public class TestaClasseMenuController {
         stage.close();
     }
 
-    // Helper method to load FXML views
+    @FXML
+    void openResultView(ActionEvent event) {
+        loadView("ResultadosView.fxml", "Resultados");
+    }
     private void loadView(String fxmlFile, String nomeTela) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFile));

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="exerciciotelas.classesobjetostelas.ResultadoController">
+    <TextField fx:id="filterField" promptText="Filter results..." onKeyReleased="#filterResults"/>
+    <TableView fx:id="resultTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID" />
+            <TableColumn fx:id="refeicaoColumn" text="Refeição" />
+            <TableColumn fx:id="resultColumn" text="Result" />
+            <TableColumn fx:id="dateTimeColumn" text="Date/Time" />
+        </columns>
+    </TableView>
+</VBox>

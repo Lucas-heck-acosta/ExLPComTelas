@@ -1,6 +1,7 @@
 package exerciciotelas.classesobjetostelas;
 
 import exerciciotelas.classesobjetostelas.DAO.RefeicaoDAO;
+import exerciciotelas.classesobjetostelas.DAO.TentativaDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,6 +18,7 @@ public class FogaoController {
 
     private Fogao fogao = new Fogao();
     private RefeicaoDAO refeicaoDAO = new RefeicaoDAO();
+    private TentativaDAO tentativaDAO = new TentativaDAO();
     private ObservableList<Refeicao> refeicoesDisponiveis = FXCollections.observableArrayList();
     private Timer timer;
 
@@ -49,7 +51,7 @@ public class FogaoController {
                 fogao.ajustarTemperatura(temperatura);
                 lblTemp.setText(temperatura + "°C");
                 atualizarImagemFogao();
-                startCookingTimer(temperatura);
+                comecarTimer(temperatura);
             } else {
                 lblTemp.setText("0°C");
             }
@@ -125,7 +127,7 @@ public class FogaoController {
         }
     }
 
-    private void startCookingTimer(int initialTemperature) {
+    private void comecarTimer(int initialTemperature) {
         if (cmbRefeicao.getSelectionModel().getSelectedItem() != null) {
             int cookTemp = cmbRefeicao.getSelectionModel().getSelectedItem().getTemperaturaDePreparo();
             if (initialTemperature >= cookTemp) {
@@ -138,7 +140,7 @@ public class FogaoController {
                     public void run() {
                         Platform.runLater(() -> {
                             int finalTemperature = fogao.getTemperatura();
-                            showCookingResult(finalTemperature, cookTemp);
+                            mostrarResultado(finalTemperature, cookTemp);
                         });
                     }
                 }, 5000);
@@ -146,7 +148,7 @@ public class FogaoController {
         }
     }
 
-    private void showCookingResult(int temperatura, int tempoCozimento) {
+    private void mostrarResultado(int temperatura, int tempoCozimento) {
         String imagePath;
         String resultMessage;
 
@@ -173,5 +175,20 @@ public class FogaoController {
 
         alert.showAndWait();
 
+        Refeicao selectedRefeicao = cmbRefeicao.getSelectionModel().getSelectedItem();
+        if (selectedRefeicao != null) {
+            tentativaDAO.registrarTentativa(selectedRefeicao.getId(), resultMessage);
+        }
+
+        resetarEstado();
+    }
+
+    private void resetarEstado() {
+        cmbRefeicao.getSelectionModel().clearSelection();
+        fogao.desligar();
+        sldTemp.setValue(0);
+        lblTemp.setText("0°C");
+        atualizarImagemFogao();
+        atualizarEstadoBotao();
     }
 }

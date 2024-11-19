@@ -9,6 +9,7 @@
       <Button fx:id="btnProduto" mnemonicParsing="false" onAction="#openProdutoView" prefHeight="90.0" prefWidth="291.0" text="Produto" />
       <Button fx:id="btnRefeicao" mnemonicParsing="false" onAction="#openRefeicaoView" prefHeight="90.0" prefWidth="291.0" text="Refeição" />
         <Button fx:id="btnFogao" mnemonicParsing="false" onAction="#openFogaoView" prefHeight="90.0" prefWidth="291.0" text="Fogão" />
-        <Button fx:id="btnSair" mnemonicParsing="false" onAction="#exitApplication" prefHeight="90.0" prefWidth="291.0" text="Sair" />
+        <Button fx:id="btnResultados" mnemonicParsing="false" onAction="#openResultView" prefHeight="90.0" prefWidth="291.0" text="Resultados" />
+      <Button fx:id="btnSair" mnemonicParsing="false" onAction="#exitApplication" prefHeight="90.0" prefWidth="291.0" text="Sair" />
     </children>
 </VBox>
